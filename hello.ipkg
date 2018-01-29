@@ -2,5 +2,9 @@ package hello
 
 sourcedir = src
 
-modules = Hello
+pkgs = specdris
 
+modules = Hello
+        , HelloTest
+
+tests = HelloTest.testSpec

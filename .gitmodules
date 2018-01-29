@@ -1,0 +1,3 @@
+[submodule "vendor/specdris"]
+	path = vendor/specdris
+	url = git@github.com:pheymann/specdris.git
