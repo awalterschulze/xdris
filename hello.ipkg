@@ -1,0 +1,6 @@
+package hello
+
+sourcedir = src
+
+modules = Hello
+

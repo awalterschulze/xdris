@@ -1,8 +1,14 @@
-build: hello.idr
-	idris hello.idr -o hello
+build:
+	idris --build hello.ipkg
 
-run: build
-	./hello
+install: build
+	idris --install hello.ipkg
 
-check:
-	idris hello.idr --check
+run: install
+	idris -p hello Main.idr -o main
+	./main
+
+clean:
+	idris --clean hello.ipkg
+	rm ./main || true
+	rm Main.ibc || true
