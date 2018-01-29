@@ -1,5 +1,5 @@
 
-module Hello
+module Regex
 
 %access export
 

@@ -1,0 +1,10 @@
+package xdris
+
+sourcedir = src
+
+pkgs = specdris
+
+modules = Regex
+        , RegexTest
+
+tests = RegexTest.testSpec

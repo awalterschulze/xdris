@@ -1,8 +1,8 @@
 
 module Main
 
-import Hello
+import Regex
 
 main : IO ()
-main = putStrLn Hello.hello
+main = putStrLn Regex.hello
 

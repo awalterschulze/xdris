@@ -1,7 +1,7 @@
-module HelloTest
+module RegexTest
 
 import Specdris.Spec
-import Hello
+import Regex
 
 %access export
 
@@ -9,8 +9,8 @@ testSpec : IO ()
 testSpec = spec $ do
   describe "This is my hello test" $ do
     it "checks hello world" $ do
-      Hello.hello `shouldBe` "hello world"
+      Regex.hello `shouldBe` "hello world"
     it "checks not hello" $ do
-      Hello.hello `shouldNotBe` "hello not world"
+      Regex.hello `shouldNotBe` "hello not world"
     it "todo" $ do
       pendingWith "do this later"

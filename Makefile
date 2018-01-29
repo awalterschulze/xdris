@@ -2,19 +2,19 @@ deps:
 	(cd vendor/specdris && ./project --install)
 
 build:
-	idris --build hello.ipkg
+	idris --build xdris.ipkg
 
 install: build
-	idris --install hello.ipkg
+	idris --install xdris.ipkg
 
 run: install
-	idris -p hello Main.idr -o main
+	idris -p xdris Main.idr -o main
 	./main
 
 clean:
-	idris --clean hello.ipkg
+	idris --clean xdris.ipkg
 	rm ./main || true
 	rm *.ibc || true
 
 test:
-	idris $(DEPS) --testpkg hello.ipkg
+	idris $(DEPS) --testpkg xdris.ipkg
