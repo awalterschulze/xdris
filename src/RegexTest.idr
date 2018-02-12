@@ -7,10 +7,10 @@ import Regex
 
 testSpec : IO ()
 testSpec = spec $ do
-  describe "This is my hello test" $ do
-    it "checks hello world" $ do
-      Regex.hello `shouldBe` "hello world"
-    it "checks not hello" $ do
-      Regex.hello `shouldNotBe` "hello not world"
+  describe "nullable test" $ do
+    it "Empty" $ do
+      (Regex.nullable Regex.Empty) `shouldBe` True
+    it "Or Char a Char b" $ do
+      (Regex.nullable (Regex.Or (Regex.Symbol 'a') (Regex.Symbol 'b'))) `shouldNotBe` True
     it "todo" $ do
       pendingWith "do this later"
