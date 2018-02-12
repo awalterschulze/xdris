@@ -2,7 +2,8 @@ package xdris
 
 sourcedir = src
 
-pkgs = specdris
+pkgs =    specdris
+        , contrib
 
 modules = Regex
         , RegexTest
