@@ -1,9 +1,6 @@
 
 module Regex
 
-import Data.SortedMap
-import Data.SortedSet
-
 %access public export
 
 data Expr = EmptySet
@@ -58,14 +55,20 @@ total
 mkVar : String -> Expr -> Pattern
 mkVar name e = VarsBase name "" e
 
+total
+newVar : String -> Pattern -> Pattern
+newVar name e = VarsGroup name "" e
+
 Env : Type
-Env = SortedMap Var String
+Env = List (Var, String)
 
-Show Env where
-    show e = show (toList e)
+total
+mkEnv : Var -> String -> Env
+mkEnv v w = [(v, w)]
 
-Eq Env where
-    (==) a b = (toList a) == (toList b)
+total
+append : Env -> Env -> Env
+append a b = a ++ b
 
 total
 nullExpr : Expr -> Bool
@@ -118,10 +121,10 @@ derivPat (ZeroOrMore p) c = Pair (derivPat p c) (ZeroOrMore p)
 total
 env : Pattern -> List Env
 env (VarsBase v w e) = if nullExpr e
-    then [insert v w empty]
+    then [mkEnv v w]
     else []
-env (VarsGroup v w p) = [insert v w es | es <- env p]
-env (Pair a b) = [merge as bs | as <- env a, bs <- env b]
+env (VarsGroup v w p) = [append (mkEnv v w) es | es <- env p]
+env (Pair a b) = [append as bs | as <- env a, bs <- env b]
 env (Choice a b) = (env a) ++ (env b)
 env (ZeroOrMore p) = env p
 

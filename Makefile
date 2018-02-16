@@ -1,6 +1,3 @@
-deps:
-	(cd vendor/specdris && ./project --install)
-
 build:
 	idris --build xdris.ipkg
 
@@ -18,3 +15,6 @@ clean:
 
 test:
 	idris $(DEPS) --testpkg xdris.ipkg
+
+deps:
+	(cd vendor/specdris && ./project --install)
